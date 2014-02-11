@@ -5,12 +5,17 @@ class Board
 	end
 
 	def show	
-		puts ("#{@grid[0][0]}|#{@grid[0][1]}|#{@grid[0][2]}")
+		puts ("#{@grid[0][0]}	|#{@grid[0][1]}	|#{@grid[0][2]}")
 		puts "---------"
-		puts ("#{@grid[1][0]}|#{@grid[1][1]}|#{@grid[1][2]}")
+		puts ("#{@grid[1][0]}	|#{@grid[1][1]}	|#{@grid[1][2]}")
 		puts "---------"
-		puts ("#{@grid[2][0]}|#{@grid[2][1]}|#{@grid[2][2]}")
+		puts ("#{@grid[2][0]}	|#{@grid[2][1]}	|#{@grid[2][2]}")
 	end
+
+	def insert(x,y,value)
+	@grid [x][y] = value
+	end
+
 
 end
 
@@ -51,18 +56,17 @@ class Game
 
 	def game_loop
 		while @game_in_progress do
-			#ask the current player for input
-
-			#update the game based on the input
-
-			#update the current player
+			puts "Make a move ([0-2], [0,2]):"
+			input = gets.chomp
+			x = input.split(",")[0].to_i
+			y = input.split(",")[1].to_i
+			@board.insert(x,y, "X")
+			@board.show
 		end
 		end
 
 			
 	end
-
-end
 
 
 class Player
